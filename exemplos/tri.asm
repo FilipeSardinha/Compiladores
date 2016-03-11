@@ -1,0 +1,1522 @@
+; EXTRN
+extern	$prints
+; EXTRN
+extern	$readi
+; BSS
+segment	.bss
+; ALIGN
+align	4
+; LABEL
+$a:
+; BYTE
+	resb	4
+; TEXT
+segment	.text
+; BSS
+segment	.bss
+; ALIGN
+align	4
+; LABEL
+$b:
+; BYTE
+	resb	4
+; TEXT
+segment	.text
+; BSS
+segment	.bss
+; ALIGN
+align	4
+; LABEL
+$c:
+; BYTE
+	resb	4
+; TEXT
+segment	.text
+; TEXT
+segment	.text
+; ALIGN
+align	4
+; GLOBL
+global	$entry:function
+; LABEL
+$entry:
+; ENTER
+	push	ebp
+	mov	ebp, esp
+	sub	esp, 0
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i21:
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x64
+; CHAR
+	db	0x75
+; CHAR
+	db	0x7A
+; CHAR
+	db	0x61
+; CHAR
+	db	0x20
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x70
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x69
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x3A
+; CHAR
+	db	0x20
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i21
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; CALL
+	call	$readi
+; TRASH
+	add	esp, 0
+; PUSH
+	push	eax
+; ADDRA
+	pop	eax
+	mov	[$a], eax
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i22:
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x64
+; CHAR
+	db	0x75
+; CHAR
+	db	0x7A
+; CHAR
+	db	0x61
+; CHAR
+	db	0x20
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x73
+; CHAR
+	db	0x65
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x3A
+; CHAR
+	db	0x20
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i22
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; CALL
+	call	$readi
+; TRASH
+	add	esp, 0
+; PUSH
+	push	eax
+; ADDRA
+	pop	eax
+	mov	[$b], eax
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i23:
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x64
+; CHAR
+	db	0x75
+; CHAR
+	db	0x7A
+; CHAR
+	db	0x61
+; CHAR
+	db	0x20
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x65
+; CHAR
+	db	0x72
+; CHAR
+	db	0x63
+; CHAR
+	db	0x65
+; CHAR
+	db	0x69
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x3A
+; CHAR
+	db	0x20
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i23
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; CALL
+	call	$readi
+; TRASH
+	add	esp, 0
+; PUSH
+	push	eax
+; ADDRA
+	pop	eax
+	mov	[$c], eax
+; ADDRV
+	push	dword [$a]
+; IMM
+	push	dword 1
+; JGE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jge	near $_i19
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i24:
+; CHAR
+	db	0x41
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x65
+; CHAR
+	db	0x76
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x73
+; CHAR
+	db	0x65
+; CHAR
+	db	0x72
+; CHAR
+	db	0x20
+; CHAR
+	db	0x70
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x69
+; CHAR
+	db	0x74
+; CHAR
+	db	0x69
+; CHAR
+	db	0x76
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i24
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i20
+; LABEL
+$_i19:
+; ADDRV
+	push	dword [$b]
+; IMM
+	push	dword 1
+; JGE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jge	near $_i17
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i25:
+; CHAR
+	db	0x41
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x65
+; CHAR
+	db	0x76
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x73
+; CHAR
+	db	0x65
+; CHAR
+	db	0x72
+; CHAR
+	db	0x20
+; CHAR
+	db	0x70
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x69
+; CHAR
+	db	0x74
+; CHAR
+	db	0x69
+; CHAR
+	db	0x76
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i25
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i18
+; LABEL
+$_i17:
+; ADDRV
+	push	dword [$c]
+; IMM
+	push	dword 1
+; JGE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jge	near $_i15
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i26:
+; CHAR
+	db	0x41
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB5
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x61
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x64
+; CHAR
+	db	0x65
+; CHAR
+	db	0x76
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x73
+; CHAR
+	db	0x65
+; CHAR
+	db	0x72
+; CHAR
+	db	0x20
+; CHAR
+	db	0x70
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x73
+; CHAR
+	db	0x69
+; CHAR
+	db	0x74
+; CHAR
+	db	0x69
+; CHAR
+	db	0x76
+; CHAR
+	db	0x61
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i26
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i16
+; LABEL
+$_i15:
+; ADDRV
+	push	dword [$a]
+; ADDRV
+	push	dword [$b]
+; ADD
+	pop	eax
+	add	dword [esp], eax
+; ADDRV
+	push	dword [$c]
+; JGT
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jg	near $_i13
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i27:
+; CHAR
+	db	0x4E
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA3
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA9
+; CHAR
+	db	0x20
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i27
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i14
+; LABEL
+$_i13:
+; ADDRV
+	push	dword [$a]
+; ADDRV
+	push	dword [$c]
+; ADD
+	pop	eax
+	add	dword [esp], eax
+; ADDRV
+	push	dword [$b]
+; JGT
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jg	near $_i11
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i28:
+; CHAR
+	db	0x4E
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA3
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA9
+; CHAR
+	db	0x20
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i28
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i12
+; LABEL
+$_i11:
+; ADDRV
+	push	dword [$c]
+; ADDRV
+	push	dword [$b]
+; ADD
+	pop	eax
+	add	dword [esp], eax
+; ADDRV
+	push	dword [$a]
+; JGT
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jg	near $_i9
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i29:
+; CHAR
+	db	0x4E
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA3
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA9
+; CHAR
+	db	0x20
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6D
+; CHAR
+	db	0x20
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i29
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i10
+; LABEL
+$_i9:
+; ADDRV
+	push	dword [$a]
+; ADDRV
+	push	dword [$b]
+; JNE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jne	near $_i7
+; ADDRV
+	push	dword [$b]
+; ADDRV
+	push	dword [$c]
+; JNE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jne	near $_i1
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i30:
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x65
+; CHAR
+	db	0x71
+; CHAR
+	db	0x75
+; CHAR
+	db	0x69
+; CHAR
+	db	0x6C
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA1
+; CHAR
+	db	0x65
+; CHAR
+	db	0x72
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i30
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i2
+; LABEL
+$_i1:
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i31:
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x69
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB3
+; CHAR
+	db	0x63
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i31
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; LABEL
+$_i2:
+; JMP
+	jmp	dword $_i8
+; LABEL
+$_i7:
+; ADDRV
+	push	dword [$b]
+; ADDRV
+	push	dword [$c]
+; JNE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jne	near $_i5
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i32:
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x69
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB3
+; CHAR
+	db	0x63
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i32
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i6
+; LABEL
+$_i5:
+; ADDRV
+	push	dword [$a]
+; ADDRV
+	push	dword [$c]
+; JNE
+	pop	eax
+	pop	ecx
+	cmp	ecx, eax
+	jne	near $_i3
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i33:
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x69
+; CHAR
+	db	0x73
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xB3
+; CHAR
+	db	0x63
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i33
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; JMP
+	jmp	dword $_i4
+; LABEL
+$_i3:
+; RODATA
+segment	.rodata
+; ALIGN
+align	4
+; LABEL
+$_i34:
+; CHAR
+	db	0x74
+; CHAR
+	db	0x72
+; CHAR
+	db	0x69
+; CHAR
+	db	0xC3
+; CHAR
+	db	0xA2
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x67
+; CHAR
+	db	0x75
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x20
+; CHAR
+	db	0x65
+; CHAR
+	db	0x73
+; CHAR
+	db	0x63
+; CHAR
+	db	0x61
+; CHAR
+	db	0x6C
+; CHAR
+	db	0x65
+; CHAR
+	db	0x6E
+; CHAR
+	db	0x6F
+; CHAR
+	db	0x0A
+; CHAR
+	db	0x00
+; TEXT
+segment	.text
+; ADDR
+	push	dword $_i34
+; CALL
+	call	$prints
+; TRASH
+	add	esp, 4
+; PUSH
+	push	eax
+; LABEL
+$_i4:
+; LABEL
+$_i6:
+; LABEL
+$_i8:
+; LABEL
+$_i10:
+; LABEL
+$_i12:
+; LABEL
+$_i14:
+; LABEL
+$_i16:
+; LABEL
+$_i18:
+; LABEL
+$_i20:
+; IMM
+	push	dword 0
+; POP
+	pop	eax
+; LEAVE
+	leave
+; RET
+	ret

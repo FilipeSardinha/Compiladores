@@ -1,0 +1,10 @@
+public void prints(string s)
+public void println()
+integer x
+public integer entry (integer argc, string *argv, string *envp) {
+  do {
+    prints("ola\n")
+    x := x + 1
+  } while x < 30
+  entry := 0
+};

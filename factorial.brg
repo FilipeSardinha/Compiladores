@@ -1,0 +1,194 @@
+%{
+/* (Factorial with functions included as instructions)
+ * Instruction selection with postfix.h
+ */
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <string.h>
+#include "node.h"
+#include "tabid.h"
+#include "postfix.h"
+#include "y.tab.h"
+
+
+extern FILE *outfp;
+extern int lbl;
+extern char *mklbl(int n);
+extern char **yynames;
+
+static int stk;
+static int sameVar(NODEPTR_TYPE p) {
+  return strcmp(p->SUB(0)->value.s, p->SUB(1)->SUB(0)->value.s) ? 0x7fff : 2;
+}
+static int sameLoc(NODEPTR_TYPE p) {
+  return p->SUB(0)->value.s == p->SUB(1)->SUB(0)->value.s ? 0x7fff : 2;
+}
+
+%}
+
+%include "y.tab.h"
+%%
+instr: CORPO(instr)		1
+
+instr:	VAZIO			1
+instr:	INSTRS(instr,instr)		1
+
+instr: expr		
+
+expr:	STRING		4 { char *l = mklbl(++lbl);
+							fprintf(outfp, pfRODATA pfALIGN pfLABEL, l);
+							char *s = p->value.s;
+							while(*s) {
+								fprintf(outfp, 	pfCHAR, (unsigned char)*s);
+								s++;
+							}
+							fprintf(outfp, 	pfCHAR, 0);
+							fprintf(outfp, 	pfTEXT pfADDR, l);}
+				
+expr:	NUMBER
+expr:	JZ(reg,ETIQ)	1 { fprintf(outfp, pfJZ, p->SUB(1)->value.s); }
+expr:	JNZ(reg,ETIQ)	1 { fprintf(outfp, pfJNZ, p->SUB(1)->value.s); }
+expr:	JMP				1 { fprintf(outfp, pfJMP, p->value.s); }
+expr:	LABEL		  	{ fprintf(outfp, pfLABEL, p->value.s); }
+
+expr:	IS(ID,reg)   1 { fprintf(outfp, pfADDRA, p->SUB(0)->value.s); }
+expr:	IS(LOCAL,reg)   1 { fprintf(outfp, pfLOCA, p->SUB(0)->value.i); }
+expr:	JZ(LESS(reg,reg), ETIQ)	1 { fprintf(outfp, pfJGE, p->SUB(1)->value.s); }
+expr:	JZ(LE(reg,reg), ETIQ)	1 { fprintf(outfp, pfJGT, p->SUB(1)->value.s); }
+expr:	JZ(GREATER(reg,reg), ETIQ)	1 { fprintf(outfp, pfJLE, p->SUB(1)->value.s); }
+expr:	JZ(GE(reg,reg), ETIQ)	1 { fprintf(outfp, pfJLT, p->SUB(1)->value.s); }
+expr:	JZ(EQUAL(reg,reg), ETIQ)	1 { fprintf(outfp, pfJNE, p->SUB(1)->value.s); }
+expr:	JZ(DIFF(reg,reg), ETIQ)	1 { fprintf(outfp, pfJEQ, p->SUB(1)->value.s); }
+expr:	JNZ(LESS(reg,reg), ETIQ)	1 { fprintf(outfp, pfJLT, p->SUB(1)->value.s); }
+expr:	JNZ(LE(reg,reg), ETIQ)	1 { fprintf(outfp, pfJLE, p->SUB(1)->value.s); }
+expr:	JNZ(GREATER(reg,reg), ETIQ)	1 { fprintf(outfp, pfJGT, p->SUB(1)->value.s); }
+expr:	JNZ(GE(reg,reg), ETIQ)	1 { fprintf(outfp, pfJGE, p->SUB(1)->value.s); }
+expr:	JNZ(EQUAL(reg,reg), ETIQ)	1 { fprintf(outfp, pfJEQ, p->SUB(1)->value.s); }
+expr:	JNZ(DIFF(reg,reg), ETIQ)	1 { fprintf(outfp, pfJNE, p->SUB(1)->value.s); }
+expr:	reg		
+
+expr:   RETURN(reg)	3 { fprintf(outfp, pfPOP pfLEAVE pfRET); }
+
+
+reg:	INC(expr)
+reg:	DEC(expr)								
+reg: 	ADD (reg, reg) 		1 { fprintf(outfp, pfADD); }
+reg:	SUBT(reg,reg)		1 { fprintf(outfp, pfSUB); }
+reg:	SIM(reg)			1 { fprintf(outfp, pfNEG); } 
+reg:	PRODUCT(reg,reg)	1 { fprintf(outfp, pfMUL); }
+reg:	DIV(reg,reg)		1 { fprintf(outfp, pfDIV); }
+reg:	MOD(reg,reg)		1 { fprintf(outfp, pfMOD); }
+reg:	EQUAL(reg,reg)		1 { fprintf(outfp, pfEQ); }
+reg:	DIFF(reg,reg)		1 { fprintf(outfp, pfNE); }
+reg:	LESS(reg,reg)		1 { fprintf(outfp, pfLT); }
+reg:	LE(reg,reg)			1 { fprintf(outfp, pfLE); }
+reg:	GE(reg,reg)			1 { fprintf(outfp, pfGE); }
+reg:	GREATER(reg,reg)	1 { fprintf(outfp, pfGT); }
+reg:	NOT(reg) 1 { fprintf(outfp, pfNOT);}
+reg: 	OR(reg,reg) 1 { fprintf(outfp, pfOR);}
+reg: 	AND(reg,reg) 1 { fprintf(outfp, pfAND);}
+
+reg: 	INTEGER		1 { fprintf(outfp, pfIMM, p->value.i); }
+reg:	ID			1 { fprintf(outfp, pfADDRV, p->value.s); }
+reg:	LOCAL		1 { fprintf(outfp, pfLOCV, p->value.i); }
+
+reg:	IS(ID, CALL(ID,stack))	1 {
+		fprintf(outfp, pfCALL pfTRASH pfPUSH pfADDRA,
+			p->SUB(1)->SUB(0)->value.s, 4*stk, p->SUB(0)->value.s);
+		stk = 0;
+	      }
+reg:	IS(LOCAL, CALL(ID,stack))	1 {
+		fprintf(outfp, pfCALL pfTRASH pfPUSH pfLOCA,
+			p->SUB(1)->SUB(0)->value.s, 4*stk, p->SUB(0)->value.i);
+		stk = 0;
+	      }
+reg:	IS(ID,ADD(ID,INTEGER))	sameVar {
+		fprintf(outfp, pfADDR pfINCR, p->SUB(0)->value.s,
+			p->SUB(1)->SUB(1)->value.i); }
+reg:	IS(LOCAL,ADD(LOCAL,INTEGER))	sameLoc {
+		fprintf(outfp, pfLOCAL pfINCR, p->SUB(0)->value.i,
+			p->SUB(1)->SUB(1)->value.i); }
+reg: 	CALL(ID,stack)	1 {
+	/*se retorno nao for void faz push*/
+	/*se tiver argumentos faz trash*/
+		fprintf(outfp, pfCALL pfTRASH pfPUSH, p->SUB(0)->value.s, 4*stk);
+		stk = 0;
+	      }
+
+
+stack:	EXPRSSS(stack,stack)
+stack:	expr	{ stk++; }
+stack:	VAZIO
+
+%%
+void function(char *name, int enter, Node *body) {
+  int i;
+  extern int trace;
+
+  if(trace) printNode(body, stdout, yynames);
+  if (body->info == 0) /* forward declaration */
+    fprintf(outfp, pfEXTRN, name);
+  else { /* function body */ 
+    fprintf(outfp, pfTEXT pfALIGN pfGLOBL pfLABEL pfENTER, name, pfFUNC, name, enter);
+    if (yyselect(body) == 1) yyerror("No match for syntactic tree.");
+
+    freeNode(body);
+  }
+}
+
+int calculartipo(int info) {
+	if (info > 32)
+		info = info -32;
+	if (info > 16)
+		info = info -16;
+	if (info > 8)
+		info = info -8;
+	if (info > 4)
+		info = info -4;
+	return info;
+} 
+
+
+void declare(char *name, Node* node, int type) {
+  switch(calculartipo(type)) {
+	case 1:
+	  IDnew(INTEGER, name, 0);
+	  if (node == 0)
+	    fprintf(outfp, pfBSS pfALIGN pfLABEL pfBYTE pfTEXT, name, 4);
+	  else
+	    fprintf(outfp, pfDATA pfALIGN pfLABEL pfINTEGER pfTEXT, name, node->value.i);
+	break;		
+	case 2:
+	  IDnew(STRING, name, 0);
+	  if (node ==0)
+	     fprintf(outfp, pfBSS pfALIGN pfLABEL pfBYTE, name, 4);
+	  else {
+			char *l = mklbl(++lbl);
+							fprintf(outfp, pfRODATA pfALIGN pfLABEL, l);
+							char *s = node->value.s;
+							while(*s) {
+								fprintf(outfp, 	pfCHAR, (unsigned char)*s);
+								s++;
+							}
+							fprintf(outfp, 	pfCHAR, 0);
+							fprintf(outfp, 	pfDATA pfALIGN pfLABEL pfID pfTEXT, name, l);}
+
+	   /*  fprintf(outfp, pfRODATA pfALIGN pfLABEL pfSTR pfDATA pfALIGN pfLABEL pfID pfTEXT, mklbl(++lbl), node->value.s, name, mklbl(lbl));*/
+	break;
+	case 3:
+	IDnew(NUMBER, name, 0);
+	  if (node ==0)
+	     fprintf(outfp, pfBSS pfALIGN pfLABEL pfBYTE, name, 8);
+	  else
+	     fprintf(outfp, pfRODATA pfALIGN pfLABEL pfDOUBLE pfDATA pfALIGN pfLABEL pfID pfTEXT, mklbl(++lbl), node->value.r, name, mklbl(lbl));
+	break;
+	case 0:
+	  IDnew(FUNC, name, 0);
+	  if (node == 0)
+	    fprintf(outfp, pfBSS pfALIGN pfLABEL pfBYTE pfTEXT, name, 4);
+	  else
+	    fprintf(outfp, pfDATA pfALIGN pfLABEL pfINTEGER pfTEXT, name, node->value.i);
+	break;	
+	}
+}

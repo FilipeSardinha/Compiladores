@@ -1,0 +1,19 @@
+public void printi(integer i)
+public void prints(string s)
+public void println()
+public integer readi()
+integer m
+integer x
+public integer entry (integer argc, string *argv, string *envp) {
+  m := readi()
+  if m > 0 then
+    do {
+	prints("x =")
+      printi(x)
+      println()
+      x := x + 1
+      if x = m then continue 1
+      x := x + 3
+    } while x < 20
+  entry := 0
+};

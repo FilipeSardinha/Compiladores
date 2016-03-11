@@ -1,0 +1,4 @@
+./factorial <exemplos/exemplo.fac
+nasm -felf out.asm
+ld -o out out.o run/librun.a
+./out
